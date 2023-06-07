@@ -1,8 +1,18 @@
 import React from "react";
 import styles from "./DayContainer.module.scss";
 
-const DayContainer: React.FC = (): React.ReactElement => {
-    return <>hi</>;
+interface DayContainerProps {
+    day: number;
+}
+
+const DayContainer: React.FC<DayContainerProps> = ({
+    day,
+}): React.ReactElement => {
+    return (
+        <>
+            <div>{day}</div>
+        </>
+    );
 };
 
 export default DayContainer;
