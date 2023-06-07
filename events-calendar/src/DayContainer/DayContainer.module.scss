@@ -1,4 +1,13 @@
 .DayContainer {
     height: 100px;
-    width: 100px;
+    width: 100%;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    text-align: end;
+    padding-top: 10px;
+    padding-right: 10px;
+
+    &:hover {
+        background-color: rgb(220, 218, 218);
+    }
 }

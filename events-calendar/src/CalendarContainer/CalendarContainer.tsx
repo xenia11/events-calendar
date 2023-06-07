@@ -27,15 +27,32 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
     };
 
     return (
-        <div>
-            <img src={left} />
-            {currentMonth + " " + currentYear}
-            <img src={right} />
-            <WeekdayNamesContainer />
+        <div className={styles.CalendarContainer}>
+            <div className={styles.CalendarContainer_MonthYearDisplay}>
+                {" "}
+                <img
+                    className={`${styles.CalendarContainer_MonthYearDisplay} ${styles["CalendarContainer_MonthYearDisplay-Arrow"]}`}
+                    src={left}
+                />
+                <p
+                    className={`${styles.CalendarContainer_MonthYearDisplay} ${styles["CalendarContainer_MonthYearDisplay-Para"]}`}
+                >
+                    {currentMonth + " " + currentYear}
+                </p>
+                <img
+                    className={`${styles.CalendarContainer_MonthYearDisplay} ${styles["CalendarContainer_MonthYearDisplay-Arrow"]}`}
+                    src={right}
+                />
+            </div>
 
-            {renderItems(daysInMonth).map((day) => (
-                <DayContainer day={day} />
-            ))}
+            {/* <WeekdayNamesContainer /> */}
+            <div
+                className={`${styles.CalendarContainer_MonthYearDisplay} ${styles["CalendarContainer-Style"]}`}
+            >
+                {renderItems(daysInMonth).map((day) => (
+                    <DayContainer day={day} />
+                ))}
+            </div>
         </div>
     );
 };

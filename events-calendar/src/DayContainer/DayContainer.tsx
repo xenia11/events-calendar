@@ -10,7 +10,7 @@ const DayContainer: React.FC<DayContainerProps> = ({
 }): React.ReactElement => {
     return (
         <>
-            <div>{day}</div>
+            <div className={styles.DayContainer}>{day}</div>
         </>
     );
 };
