@@ -14,6 +14,10 @@
         &-Arrow {
             height: 25px;
             width: fit-content;
+
+            &:hover {
+                transform: scale(1.5);
+            }
         }
         &-Para {
             font-size: 40px;
