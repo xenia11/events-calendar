@@ -4,36 +4,34 @@ import DayContainer from "./DayContainer/DayContainer";
 import CalendarContainer from "./CalendarContainer/CalendarContainer";
 
 function App() {
-    const month = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ];
-    const daysInMonth = (year: number, month: number) =>
-        new Date(year, month, 0).getDate();
+    const daysInMonth = (year: number, month: number): number => {
+        return new Date(year, month + 1, 0).getDate();
+        console.log(month);
+    };
     const getMonth = new Date().getMonth();
     const getYear = new Date().getFullYear();
 
-    const [currentMonth, setCurrentMonth] = useState(month[getMonth]);
+    const [currentMonth, setCurrentMonth] = useState(getMonth);
     const [currentYear, setCurrentYear] = useState(getYear);
     const [daysInAMonth, setDaysInAMonth] = useState(
-        daysInMonth(currentYear, month.indexOf(currentMonth) + 1)
+        daysInMonth(currentYear, currentMonth)
     );
+
+    const handleMonthChange = (month: number, year: number) => {
+        console.log(month, year);
+        setCurrentMonth(month);
+        setCurrentYear(year);
+        setDaysInAMonth(daysInMonth(year, month));
+    };
+    console.log(currentMonth, currentYear, daysInAMonth);
+
     return (
         <div>
             <CalendarContainer
                 currentYear={currentYear}
                 currentMonth={currentMonth}
                 daysInMonth={daysInAMonth}
+                handleMonthChange={handleMonthChange}
             />
         </div>
     );

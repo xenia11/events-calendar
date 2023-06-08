@@ -2,15 +2,19 @@ import React from "react";
 import styles from "./DayContainer.module.scss";
 
 interface DayContainerProps {
-    day: number;
+    day: string | number;
+    style?: React.CSSProperties;
 }
 
 const DayContainer: React.FC<DayContainerProps> = ({
     day,
+    style,
 }): React.ReactElement => {
     return (
         <>
-            <div className={styles.DayContainer}>{day}</div>
+            <div style={style} className={styles.DayContainer}>
+                {day}
+            </div>
         </>
     );
 };
