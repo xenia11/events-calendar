@@ -85,6 +85,8 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
         }
     };
 
+    const currentDate = new Date().toLocaleDateString("en-US");
+
     return (
         <div className={styles.CalendarContainer}>
             <div className={styles.CalendarContainer_MonthYearDisplay}>
@@ -106,12 +108,15 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
                 />
             </div>
 
-            {/* <WeekdayNamesContainer /> */}
             <div
                 className={`${styles.CalendarContainer_MonthYearDisplay} ${styles["CalendarContainer-Style"]}`}
             >
                 {daysOfWeek.map((day) => (
-                    <DayContainer key={day} day={day} />
+                    <DayContainer
+                        style={{ pointerEvents: "none", placeItems: "center" }}
+                        key={day}
+                        day={day}
+                    />
                 ))}
 
                 {daysToDisplay.map((day, index) => {
@@ -119,12 +124,33 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
                         return (
                             <DayContainer
                                 key={index}
-                                style={{ visibility: "hidden" }}
+                                style={{
+                                    borderTop: "1px solid lightgray !important",
+                                    color: "transparent",
+                                    pointerEvents: "none",
+                                }}
                                 day={day}
                             />
                         );
                     } else {
-                        return <DayContainer key={index} day={day} />;
+                        return (
+                            <DayContainer
+                                key={index}
+                                day={day}
+                                style={{
+                                    backgroundColor:
+                                        currentMonth +
+                                            1 +
+                                            "/" +
+                                            day +
+                                            "/" +
+                                            currentYear ===
+                                        currentDate
+                                            ? "#f2f2f2"
+                                            : "white",
+                                }}
+                            />
+                        );
                     }
                 })}
             </div>
