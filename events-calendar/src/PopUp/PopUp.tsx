@@ -48,7 +48,8 @@ const PopUp: React.FC<PopUpProps> = ({ handleHidden, bookInfo, children }) => {
                 ref={popupRef}
                 style={{
                     display: "flex",
-                    width: "40vw",
+                    width: "200px",
+                    height: "150px",
                     flexDirection: "row",
                     flexWrap: "wrap",
                     border: "2px solid #e4e3e3",
@@ -61,6 +62,7 @@ const PopUp: React.FC<PopUpProps> = ({ handleHidden, bookInfo, children }) => {
                     left: "20vw",
                     zIndex: "999",
                     fontSize: "14px",
+                    gap: "15px",
                 }}
             >
                 <div className={`${styles.PopUp} ${styles.PopUp_ChildDiv}`}>
