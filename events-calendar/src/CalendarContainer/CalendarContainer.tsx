@@ -4,6 +4,7 @@ import left from "../assets/left-arrow.png";
 import right from "../assets/right-arrow.png";
 import DayContainer from "../DayContainer/DayContainer";
 import WeekdayNamesContainer from "../WeekDaysNameContainer/WeekDaysNameContainer";
+import PopUp from "../PopUp/PopUp";
 
 interface CalendarContainerProps {
     daysInMonth: number;
@@ -43,6 +44,8 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
     daysInMonth,
     handleMonthChange,
 }) => {
+    const [popUp, openPopUp] = useState(false);
+    const [popUpInfo, setPopUpInfo] = useState("");
     const renderItems = (days: number) => {
         const daysArr = [];
 
@@ -53,12 +56,21 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
         return daysArr;
     };
 
+    const handleHiddenPop = () => {
+        openPopUp(false);
+    };
+
     function getDayFromDate(dateString: string): string {
         const date = new Date(dateString);
 
         const day = daysOfWeek[date.getDay()];
         return day;
     }
+
+    const openDateBox = (dateProp: string) => {
+        openPopUp(true);
+        setPopUpInfo(dateProp);
+    };
 
     const date = currentYear + "-" + (currentMonth + 1) + "-01";
     const day = getDayFromDate(date);
@@ -114,6 +126,7 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
                 {daysOfWeek.map((day) => (
                     <DayContainer
                         style={{ pointerEvents: "none", placeItems: "center" }}
+                        openDateBox={openDateBox}
                         key={day}
                         day={day}
                     />
@@ -124,6 +137,7 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
                         return (
                             <DayContainer
                                 key={index}
+                                openDateBox={openDateBox}
                                 style={{
                                     borderTop: "1px solid lightgray !important",
                                     color: "transparent",
@@ -137,6 +151,7 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
                             <DayContainer
                                 key={index}
                                 day={day}
+                                openDateBox={openDateBox}
                                 style={{
                                     backgroundColor:
                                         currentMonth +
@@ -153,6 +168,13 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
                         );
                     }
                 })}
+                {popUp && (
+                    <PopUp handleHidden={handleHiddenPop} bookInfo={popUpInfo}>
+                        <div>
+                            {popUpInfo} - {currentMonth + 1} - {currentYear}
+                        </div>
+                    </PopUp>
+                )}
             </div>
         </div>
     );
