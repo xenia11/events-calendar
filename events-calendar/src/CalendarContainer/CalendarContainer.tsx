@@ -170,8 +170,52 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
                 })}
                 {popUp && (
                     <PopUp handleHidden={handleHiddenPop} bookInfo={popUpInfo}>
-                        <div>
-                            {popUpInfo} - {currentMonth + 1} - {currentYear}
+                        <div style={{ display: "grid", gap: "10px" }}>
+                            <input
+                                style={{
+                                    border: "none",
+                                    borderBottom: "1px solid #dfd9d9",
+                                }}
+                                placeholder="Title"
+                                type="text"
+                            />
+                            <input
+                                style={{
+                                    border: "none",
+                                    borderBottom: "1px solid #dfd9d9",
+                                }}
+                                value={`${popUpInfo} / ${
+                                    currentMonth + 1
+                                } / ${currentYear}`}
+                            />
+                            <input
+                                style={{
+                                    border: "none",
+                                    borderBottom: "1px solid #dfd9d9",
+                                }}
+                                placeholder="Location"
+                                type="text"
+                            />
+                            <button
+                                style={{
+                                    border: "none",
+                                    borderRadius: "4px",
+                                    padding: "4px",
+                                }}
+                                onClick={handleHiddenPop}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                style={{
+                                    border: "none",
+                                    borderRadius: "4px",
+                                    padding: "4px",
+                                }}
+                                onClick={handleHiddenPop}
+                            >
+                                Save
+                            </button>
                         </div>
                     </PopUp>
                 )}

@@ -56,7 +56,7 @@ const PopUp: React.FC<PopUpProps> = ({ handleHidden, bookInfo, children }) => {
                     borderRadius: "5px",
                     padding: "10px",
                     boxShadow: "0 6px 12px 0 rgba(0, 0, 0, 0.2)",
-                    backgroundColor: "#ecf0f1",
+                    backgroundColor: "white",
                     position: "fixed",
                     top: "10vw",
                     left: "20vw",
@@ -68,7 +68,7 @@ const PopUp: React.FC<PopUpProps> = ({ handleHidden, bookInfo, children }) => {
                 <div className={`${styles.PopUp} ${styles.PopUp_ChildDiv}`}>
                     <img
                         style={{
-                            width: "20px",
+                            width: "13px",
                             height: "10px",
                         }}
                         onClick={hidePop}
